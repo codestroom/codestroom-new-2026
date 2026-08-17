@@ -2687,9 +2687,11 @@ footer::after{
   animation-delay: calc(var(--c) * 45ms), calc(700ms + var(--c) * 70ms);
   transition: transform 0.25s var(--ease);
 }
-.about-hero-title:hover .about-char {
-  animation-play-state: paused, paused;
-  transform: translateY(-10px) rotate(-6deg) scale(1.06);
+/* poke an individual letter. the animations have to be dropped entirely —
+   a running animation outranks a plain transform declaration. */
+.about-char:hover {
+  animation: none;
+  transform: translateY(-16px) rotate(-9deg) scale(1.2);
 }
 @keyframes aboutCharDrop {
   0%   { opacity: 0; transform: translateY(-70px) rotate(-18deg) scale(0.5); }
@@ -3148,8 +3150,9 @@ footer::after{
   transform-style: preserve-3d;
   transition: transform 0.75s var(--ease);
 }
+/* :focus (not just :focus-visible) so a tap flips the card on touch devices */
 .about-flip-inner:hover,
-.about-flip-inner:focus-visible {
+.about-flip-inner:focus {
   transform: rotateY(180deg);
 }
 .about-flip-face {
@@ -3509,7 +3512,7 @@ footer::after{
   border-radius: var(--radius-lg);
   background: linear-gradient(135deg, #12111c 0%, #2a1b8c 100%);
   color: #fff;
-  overflow: hidden;
+  /* deliberately not clipped — the confetti needs to escape the panel */
   position: relative;
   box-shadow: 0 30px 70px -30px rgba(18, 17, 28, 0.6);
 }
@@ -3799,9 +3802,23 @@ footer::after{
     transform: none;
     animation: none;
   }
+  /* no flipping — stack both faces so the punchline stays readable */
+  .about-flip,
+  .about-flip-inner { min-height: 0; }
+  .about-flip-inner,
   .about-flip-inner:hover,
-  .about-flip-inner:focus-visible { transform: none; }
-  .about-flip-back { display: none; }
+  .about-flip-inner:focus { transform: none; }
+  .about-flip-face {
+    position: relative;
+    inset: auto;
+    backface-visibility: visible;
+    -webkit-backface-visibility: visible;
+  }
+  .about-flip-back {
+    transform: none;
+    margin-top: 12px;
+  }
+  .about-flip-cue { display: none; }
   .about-marquee-row { width: 100%; }
   .about-marquee-track:nth-child(2) { display: none; }
 }
