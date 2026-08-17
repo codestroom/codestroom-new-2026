@@ -1,15 +1,22 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Reveal from './Reveal';
 
 const FORMSPREE_ENDPOINT = import.meta.env.VITE_FORMSPREE_ENDPOINT;
 
 const SERVICE_OPTIONS = [
-  'Social Media Marketing',
+  'AI Services & Solutions',
+  'Web Development (React / Next / Angular)',
+  'Custom Software & SaaS Platforms',
+  'Mobile App Development (Flutter / React Native / iOS / Android)',
+  'Backend Development & Cloud APIs (FastAPI / Node / Spring)',
+  'E-Commerce Solutions (Shopify / WooCommerce)',
+  'Digital Marketing, SEO & Performance Growth',
   'Paid Advertising',
+  'Social Media Marketing',
   'Local SEO & Google Business',
   'Website & Landing Pages',
   'Branding & Content Creation',
-  'E-commerce Marketing',
+  'Creative Design & Video Editing',
   'Something else',
 ];
 
@@ -47,6 +54,27 @@ const REASSURANCE = [
 
 export default function ContactForm() {
   const [status, setStatus] = useState('idle'); // idle | sending | success | error
+  const [selectedService, setSelectedService] = useState('');
+  const [messageValue, setMessageValue] = useState('');
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const params = new URLSearchParams(window.location.search);
+    const srvParam = params.get('service');
+    const tierParam = params.get('tier');
+
+    if (srvParam) {
+      const match = SERVICE_OPTIONS.find(
+        (opt) =>
+          opt.toLowerCase().includes(srvParam.replace(/-/g, ' ').toLowerCase()) ||
+          opt.toLowerCase().includes(srvParam.toLowerCase())
+      );
+      if (match) setSelectedService(match);
+    }
+    if (tierParam) {
+      setMessageValue(`Hi Codestroom team,\n\nI am interested in discussing the "${tierParam}" project scope.`);
+    }
+  }, []);
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -104,7 +132,13 @@ export default function ContactForm() {
               </div>
               <div className="form-field">
                 <label htmlFor="service">What are you looking for?</label>
-                <select id="service" name="service" required defaultValue="">
+                <select
+                  id="service"
+                  name="service"
+                  required
+                  value={selectedService}
+                  onChange={(e) => setSelectedService(e.target.value)}
+                >
                   <option value="" disabled>
                     Select a service
                   </option>
@@ -118,7 +152,14 @@ export default function ContactForm() {
             </div>
             <div className="form-field">
               <label htmlFor="message">Your query</label>
-              <textarea id="message" name="message" rows="5" required />
+              <textarea
+                id="message"
+                name="message"
+                rows="5"
+                required
+                value={messageValue}
+                onChange={(e) => setMessageValue(e.target.value)}
+              />
             </div>
 
             <button type="submit" className="btn btn-gradient" disabled={status === 'sending'}>

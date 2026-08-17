@@ -1,8 +1,10 @@
-import { useEffect, useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { useEffect, useState, useRef } from 'react';
+import { Link, NavLink, useLocation } from 'react-router-dom';
+import ServiceMegaMenu from './ServiceMegaMenu';
 
 const NAV_LINKS = [
-  { to: '/services', label: 'Services' },
+  { to: '/services', label: 'Services', hasDropdown: true },
+  { to: '/about', label: 'About Us' },
   { to: '/global-reach', label: 'Global Reach' },
   { to: '/process', label: 'Process' },
   { to: '/work', label: 'Work' },
@@ -12,6 +14,9 @@ const NAV_LINKS = [
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [megaMenuOpen, setMegaMenuOpen] = useState(false);
+  const dropdownRef = useRef(null);
+  const location = useLocation();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -19,7 +24,18 @@ export default function Header() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  const closeMenu = () => setMenuOpen(false);
+  // Close mega menu on route change
+  useEffect(() => {
+    setMegaMenuOpen(false);
+    setMenuOpen(false);
+  }, [location.pathname]);
+
+  const closeMenu = () => {
+    setMenuOpen(false);
+    setMegaMenuOpen(false);
+  };
+
+  const isServicesActive = location.pathname.startsWith('/services');
 
   return (
     <header className={scrolled ? 'scrolled' : ''}>
@@ -28,27 +44,57 @@ export default function Header() {
           <img className="mark" src="/assets/logo.png" alt="Codestroom logo" width="34" height="34" />
           Codestroom
         </Link>
+
         <ul className={`nav-links ${menuOpen ? 'mobile-open' : ''}`}>
-          {NAV_LINKS.map((link) => (
-            <li key={link.to}>
-              <NavLink
-                to={link.to}
-                className={({ isActive }) => (isActive ? 'active' : undefined)}
-                onClick={closeMenu}
-              >
-                {link.label}
-              </NavLink>
-            </li>
-          ))}
+          {NAV_LINKS.map((link) => {
+            if (link.hasDropdown) {
+              return (
+                <li
+                  key={link.to}
+                  className="nav-item-dropdown"
+                  ref={dropdownRef}
+                  onMouseEnter={() => setMegaMenuOpen(true)}
+                  onMouseLeave={() => setMegaMenuOpen(false)}
+                >
+                  <NavLink
+                    to={link.to}
+                    className={isServicesActive ? 'active' : undefined}
+                    onClick={() => {
+                      setMegaMenuOpen(false);
+                      closeMenu();
+                    }}
+                  >
+                    <span>{link.label}</span>
+                    <span className="dropdown-caret">▾</span>
+                  </NavLink>
+                  {megaMenuOpen && <ServiceMegaMenu onClose={() => setMegaMenuOpen(false)} />}
+                </li>
+              );
+            }
+
+            return (
+              <li key={link.to}>
+                <NavLink
+                  to={link.to}
+                  className={({ isActive }) => (isActive ? 'active' : undefined)}
+                  onClick={closeMenu}
+                >
+                  {link.label}
+                </NavLink>
+              </li>
+            );
+          })}
           <li className="nav-links-cta">
             <Link to="/contact" className="btn btn-gradient" onClick={closeMenu}>
               Start a project →
             </Link>
           </li>
         </ul>
+
         <Link to="/contact" className="btn btn-gradient nav-cta">
           Start a project
         </Link>
+
         <button
           className={`menu-toggle ${menuOpen ? 'open' : ''}`}
           aria-label="Toggle menu"

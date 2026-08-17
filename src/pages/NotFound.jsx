@@ -1,8 +1,14 @@
 import { Link } from 'react-router-dom';
+import SEOHead from '../components/SEOHead';
 
 export default function NotFound() {
   return (
     <section>
+      <SEOHead
+        title="Page Not Found (404) | Codestroom"
+        description="The page you requested could not be found. Explore our AI and IT services or return to the homepage."
+        canonicalPath="/404"
+      />
       <div className="wrap" style={{ textAlign: 'center', padding: '80px 0' }}>
         <span className="kicker">404</span>
         <h1 style={{ fontSize: 'clamp(32px, 5vw, 56px)', marginTop: '12px' }}>

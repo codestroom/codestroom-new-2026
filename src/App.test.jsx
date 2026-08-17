@@ -20,6 +20,7 @@ describe('routing', () => {
 
   it.each([
     ['/services', 'One team, every channel your business needs.'],
+    ['/about', 'The origin story'],
     ['/global-reach', 'Local insight, wherever your audience hangs out.'],
     ['/process', 'One engagement, four checkpoints.'],
     ['/work', 'Built for the businesses and people who serve their communities.'],
@@ -27,6 +28,21 @@ describe('routing', () => {
   ])('renders %s', (path, heading) => {
     renderAt(path);
     expect(screen.getByText(heading)).toBeInTheDocument();
+  });
+
+  it.each([
+    ['/services/ai-solutions', 'AI Services & Enterprise Intelligence'],
+    ['/services/web-development', 'Modern Web Development & Web Apps'],
+    ['/services/custom-software', 'Custom Software Development'],
+    ['/services/mobile-apps', 'Mobile App Development'],
+    ['/services/backend-development', 'Backend Development & Cloud APIs'],
+    ['/services/ecommerce', 'E-Commerce Solutions & Store Growth'],
+    ['/services/digital-marketing', 'Digital Marketing & Performance Growth'],
+    ['/services/creative-design', 'Creative Design, Video Editing & Brand Identity'],
+  ])('renders detailed service page %s', (path) => {
+    const page = renderAt(path);
+    expect(page.queryByText('This page ghosted us.')).not.toBeInTheDocument();
+    page.unmount();
   });
 
   it('no longer serves a standalone /blend-lab page', () => {
