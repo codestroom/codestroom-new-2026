@@ -23,6 +23,17 @@ export default function Header() {
 
   return (
     <header className={scrolled ? 'scrolled' : ''}>
+      <svg className="header-motif" viewBox="0 0 200 240" aria-hidden="true" focusable="false">
+        <defs>
+          <linearGradient id="headMotifGrad" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" style={{ stopColor: 'var(--pink)' }} />
+            <stop offset="55%" style={{ stopColor: 'var(--purple)' }} />
+            <stop offset="100%" style={{ stopColor: 'var(--blue)' }} />
+          </linearGradient>
+        </defs>
+        <path d="M78 168 Q76 200 68 236 L132 236 Q124 200 122 168 Z" fill="url(#headMotifGrad)" />
+        <ellipse cx="100" cy="94" rx="62" ry="78" fill="url(#headMotifGrad)" />
+      </svg>
       <nav className="wrap">
         <Link to="/" className="brand" onClick={closeMenu}>
           <img className="mark" src="/assets/logo.png" alt="Codestroom logo" width="34" height="34" />

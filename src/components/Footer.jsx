@@ -3,6 +3,21 @@ import { Link } from 'react-router-dom';
 export default function Footer() {
   return (
     <footer>
+      <svg className="footer-motif" viewBox="0 0 200 300" aria-hidden="true" focusable="false">
+        <defs>
+          <linearGradient id="footerMotifGrad" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" style={{ stopColor: 'var(--pink)' }} />
+            <stop offset="55%" style={{ stopColor: 'var(--purple)' }} />
+            <stop offset="100%" style={{ stopColor: 'var(--blue)' }} />
+          </linearGradient>
+        </defs>
+        <ellipse cx="100" cy="190" rx="55" ry="95" fill="url(#footerMotifGrad)" />
+        <circle cx="55" cy="70" r="16" fill="url(#footerMotifGrad)" />
+        <circle cx="81" cy="47" r="18" fill="url(#footerMotifGrad)" />
+        <circle cx="107" cy="39" r="19" fill="url(#footerMotifGrad)" />
+        <circle cx="133" cy="46" r="17" fill="url(#footerMotifGrad)" />
+        <circle cx="155" cy="61" r="14" fill="url(#footerMotifGrad)" />
+      </svg>
       <div className="wrap">
         <div className="footer-top">
           <div className="footer-brand">
