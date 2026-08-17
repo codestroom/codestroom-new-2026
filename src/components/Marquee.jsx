@@ -1,11 +1,12 @@
 const ITEMS = [
-  'Product Engineering',
-  'Performance Marketing',
-  'Cloud & DevOps',
-  'Brand Strategy',
-  'SEO & Content',
-  'App Development',
-  'Data & Analytics',
+  'Restaurants',
+  'Religious Organizations',
+  'Entrepreneurs',
+  'Public Leaders',
+  'E-commerce',
+  'Retail',
+  'Personal Brands',
+  'And More',
 ];
 
 export default function Marquee() {

@@ -3,7 +3,6 @@ import Layout from './components/Layout';
 import Home from './pages/Home';
 import ServicesPage from './pages/ServicesPage';
 import GlobalReachPage from './pages/GlobalReachPage';
-import BlendLabPage from './pages/BlendLabPage';
 import ProcessPage from './pages/ProcessPage';
 import WorkPage from './pages/WorkPage';
 import ContactPage from './pages/ContactPage';
@@ -16,7 +15,6 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="/services" element={<ServicesPage />} />
         <Route path="/global-reach" element={<GlobalReachPage />} />
-        <Route path="/blend-lab" element={<BlendLabPage />} />
         <Route path="/process" element={<ProcessPage />} />
         <Route path="/work" element={<WorkPage />} />
         <Route path="/contact" element={<ContactPage />} />

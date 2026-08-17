@@ -2,16 +2,15 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import Reveal from './Reveal';
 
 const COPY = {
-  eng: "Engineering-led: this team leans build-first. We'll staff more product engineers, with a lean growth function running in support once the platform is live.",
-  balanced:
-    'A balanced team: equal parts product engineering and demand generation, working from the same roadmap.',
-  growth:
-    "Growth-led: this team leans acquisition-first. We'll staff more growth specialists, with engineering focused on funnel performance and conversion.",
+  organic:
+    'Organic-led: this plan leans into content, local SEO and community trust — building visibility that compounds over time.',
+  balanced: 'A balanced mix: organic content and paid campaigns working together from the same strategy.',
+  paid: "Paid-led: this plan leans into ads and performance campaigns — built for fast, measurable results.",
 };
 
 function readoutFor(value) {
-  if (value < 38) return COPY.eng;
-  if (value > 62) return COPY.growth;
+  if (value < 38) return COPY.organic;
+  if (value > 62) return COPY.paid;
   return COPY.balanced;
 }
 
@@ -65,18 +64,18 @@ export default function BlendLab() {
     if (e.key === 'ArrowRight') setValue((v) => Math.min(85, v + 5));
   };
 
-  const engPct = Math.round(100 - value);
-  const growPct = Math.round(value);
+  const organicPct = Math.round(100 - value);
+  const paidPct = Math.round(value);
 
   return (
     <section id="blend-lab">
       <div className="wrap">
         <Reveal className="section-head">
           <span className="kicker">Try it yourself</span>
-          <h2>Drag to find your team's blend.</h2>
+          <h2>Drag to find your marketing mix. No math required.</h2>
           <p>
-            Every engagement leans differently toward build and grow. Slide the handle to see
-            how we'd staff yours — and where the two disciplines overlap.
+            Every business leans differently toward organic trust-building and paid
+            performance. Slide the handle and find out where yours lands.
           </p>
         </Reveal>
         <Reveal className="lab">
@@ -96,24 +95,24 @@ export default function BlendLab() {
               aria-valuemin={15}
               aria-valuemax={85}
               aria-valuenow={Math.round(value)}
-              aria-label="Balance between engineering and growth"
+              aria-label="Balance between organic and paid marketing"
               style={{ left: `${value}%` }}
               onPointerDown={handlePointerDown}
               onKeyDown={handleKeyDown}
             >
               <span className="lab-pct">
-                {engPct}/{growPct}
+                {organicPct}/{paidPct}
               </span>
             </div>
           </div>
           <div className="lab-labels">
             <div className="lab-label-left">
-              <strong>Engineering</strong>
-              <span>Build, ship, scale</span>
+              <strong>Organic</strong>
+              <span>Content, SEO, community</span>
             </div>
             <div className="lab-label-right">
-              <strong>Growth</strong>
-              <span>Reach, convert, retain</span>
+              <strong>Paid</strong>
+              <span>Ads, campaigns, performance</span>
             </div>
           </div>
           <p className="lab-readout">{readoutFor(value)}</p>

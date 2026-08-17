@@ -5,66 +5,67 @@ export default function Work() {
     <section id="work">
       <div className="wrap">
         <Reveal className="section-head">
-          <span className="kicker">Recent results</span>
-          <h2>Built to move the number that matters.</h2>
-          <p>A snapshot of the outcomes behind the work — across fintech, retail and healthtech clients.</p>
+          <span className="kicker">Industries we serve</span>
+          <h2>Built for the businesses and people who serve their communities.</h2>
+          <p>From restaurant tables to online storefronts to public offices — a look at who we work with and how we help them grow.</p>
         </Reveal>
         <div className="work-grid">
           <Reveal as="div" className="work-card work-1 large">
-            <span className="kicker">Fintech · Platform rebuild</span>
-            <h3>Rebuilding a payments dashboard for scale</h3>
+            <span className="kicker">Restaurants &amp; Local Business</span>
+            <h3>Turning nearby searches into full tables</h3>
             <p>
-              A full-stack rebuild of a legacy admin platform, cutting page load times and
-              enabling real-time reconciliation across 14 markets.
+              Google Business optimization, social content and local ad campaigns built to get
+              restaurants and local businesses found — and chosen — by the people searching
+              nearby.
             </p>
             <div className="metrics">
               <div>
-                <div className="m-num">-68%</div>
-                <div className="m-lbl">Load time</div>
+                <div className="m-num">Local SEO</div>
+                <div className="m-lbl">Google Business &amp; Maps</div>
               </div>
               <div>
-                <div className="m-num">14</div>
-                <div className="m-lbl">Markets live</div>
+                <div className="m-num">Social Content</div>
+                <div className="m-lbl">Reels, posts &amp; offers</div>
               </div>
               <div>
-                <div className="m-num">99.98%</div>
-                <div className="m-lbl">Uptime</div>
+                <div className="m-num">Online Ordering</div>
+                <div className="m-lbl">Delivery &amp; reservation funnels</div>
               </div>
             </div>
           </Reveal>
           <Reveal as="div" className="work-card work-2">
-            <span className="kicker">Retail · Growth</span>
-            <h3>Scaling paid acquisition profitably</h3>
+            <span className="kicker">E-commerce</span>
+            <h3>Marketing that turns browsers into buyers</h3>
             <p>
-              Restructured campaign architecture and landing funnels for a DTC retailer entering
-              three new markets.
+              Paid campaigns, product content and conversion-focused funnels for online stores
+              selling across India, Canada, the USA and Europe.
             </p>
             <div className="metrics">
               <div>
-                <div className="m-num">3.4x</div>
-                <div className="m-lbl">ROAS</div>
+                <div className="m-num">Paid Ads</div>
+                <div className="m-lbl">Meta &amp; Google Shopping</div>
               </div>
               <div>
-                <div className="m-num">+61%</div>
-                <div className="m-lbl">Conversions</div>
+                <div className="m-num">Funnels</div>
+                <div className="m-lbl">Landing pages that convert</div>
               </div>
             </div>
           </Reveal>
           <Reveal as="div" className="work-card work-3">
-            <span className="kicker">Healthtech · SEO</span>
-            <h3>Organic traffic, rebuilt from zero</h3>
+            <span className="kicker">Public Leaders &amp; Organizations</span>
+            <h3>Building trust and visibility that lasts</h3>
             <p>
-              Technical SEO overhaul and content system for a healthtech platform re-entering
-              search after a domain migration.
+              Digital presence and outreach campaigns for religious organizations, community
+              leaders and public representatives — built on credibility, not gimmicks.
             </p>
             <div className="metrics">
               <div>
-                <div className="m-num">+212%</div>
-                <div className="m-lbl">Organic traffic</div>
+                <div className="m-num">Outreach</div>
+                <div className="m-lbl">Community-first messaging</div>
               </div>
               <div>
-                <div className="m-num">340</div>
-                <div className="m-lbl">Keywords ranked</div>
+                <div className="m-num">Reputation</div>
+                <div className="m-lbl">Consistent public presence</div>
               </div>
             </div>
           </Reveal>

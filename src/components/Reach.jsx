@@ -1,10 +1,10 @@
 import Reveal from './Reveal';
 
 const STATS = [
-  { num: '27', lbl: 'Countries with active clients' },
-  { num: '3', lbl: 'Delivery hubs, 3 continents' },
-  { num: '18hrs', lbl: 'Average daily coverage' },
-  { num: '92%', lbl: 'Client retention rate' },
+  { num: 'India', lbl: 'Restaurants, entrepreneurs, e-commerce & public leaders' },
+  { num: 'Canada', lbl: 'Local business & entrepreneur marketing' },
+  { num: 'USA', lbl: 'E-commerce & entrepreneur growth' },
+  { num: 'Europe', lbl: 'Growing presence across the region' },
 ];
 
 export default function Reach() {
@@ -21,13 +21,14 @@ export default function Reach() {
           <div className="reach-inner">
             <div>
               <span className="kicker" style={{ color: '#FF8FC4' }}>
-                Global delivery
+                Where we work
               </span>
-              <h2>Time zones aren't a limitation — they're our shift schedule.</h2>
+              <h2>Local insight, wherever your audience hangs out.</h2>
               <p>
-                With teams distributed across three continents, Codestroom runs projects around
-                the clock. Overlap hours for live collaboration, async handoffs for continuous
-                progress.
+                Codestroom works with restaurants, religious organizations, entrepreneurs,
+                public leaders and e-commerce brands across India, Canada, the USA and Europe —
+                bringing the same data-driven approach to every market, tailored to what
+                actually resonates locally.
               </p>
             </div>
             <div className="reach-stats">

@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import Reveal from './Reveal';
 
 export default function CTA() {
@@ -5,15 +6,15 @@ export default function CTA() {
     <section id="contact">
       <div className="wrap">
         <Reveal className="cta-band">
-          <h2>Tell us what you're building. We'll tell you what it takes.</h2>
-          <p>No discovery calls that go nowhere — just a straight answer on scope, timeline and team within 48 hours.</p>
+          <h2>Tell us about your business. We promise not to yawn.</h2>
+          <p>No 47-slide decks. No "let's circle back." Just a straight answer on scope, timeline and team — within 48 hours.</p>
           <div className="hero-ctas">
-            <a href="mailto:hello@codestroom.com" className="btn btn-primary">
-              hello@codestroom.com
+            <a href="mailto:contact@codestroom.com" className="btn btn-primary">
+              contact@codestroom.com
             </a>
-            <a href="#" className="btn btn-ghost">
+            <Link to="/contact" className="btn btn-ghost">
               Book an intro call
-            </a>
+            </Link>
           </div>
         </Reveal>
       </div>

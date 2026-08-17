@@ -4,7 +4,6 @@ import { Link, NavLink } from 'react-router-dom';
 const NAV_LINKS = [
   { to: '/services', label: 'Services' },
   { to: '/global-reach', label: 'Global Reach' },
-  { to: '/blend-lab', label: 'Blend Lab' },
   { to: '/process', label: 'Process' },
   { to: '/work', label: 'Work' },
   { to: '/contact', label: 'Contact' },
@@ -20,10 +19,12 @@ export default function Header() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
+  const closeMenu = () => setMenuOpen(false);
+
   return (
     <header className={scrolled ? 'scrolled' : ''}>
       <nav className="wrap">
-        <Link to="/" className="brand">
+        <Link to="/" className="brand" onClick={closeMenu}>
           <img className="mark" src="/assets/logo.png" alt="Codestroom logo" width="34" height="34" />
           Codestroom
         </Link>
@@ -33,19 +34,25 @@ export default function Header() {
               <NavLink
                 to={link.to}
                 className={({ isActive }) => (isActive ? 'active' : undefined)}
-                onClick={() => setMenuOpen(false)}
+                onClick={closeMenu}
               >
                 {link.label}
               </NavLink>
             </li>
           ))}
+          <li className="nav-links-cta">
+            <Link to="/contact" className="btn btn-gradient" onClick={closeMenu}>
+              Start a project →
+            </Link>
+          </li>
         </ul>
         <Link to="/contact" className="btn btn-gradient nav-cta">
           Start a project
         </Link>
         <button
-          className="menu-toggle"
+          className={`menu-toggle ${menuOpen ? 'open' : ''}`}
           aria-label="Toggle menu"
+          aria-expanded={menuOpen}
           onClick={() => setMenuOpen((open) => !open)}
         >
           <span></span>

@@ -5,20 +5,14 @@ const ITEMS = [
   {
     to: '/services',
     title: 'Services',
-    desc: 'Web, mobile, cloud, and the marketing engine that drives demand — everything under one roof.',
+    desc: 'Social, search, ads and content — everything you need to grow your audience, minus the headache of hiring five different agencies.',
     tag: 'What we do',
   },
   {
     to: '/global-reach',
     title: 'Global Reach',
-    desc: 'Delivery hubs across three continents, running your project around the clock.',
+    desc: 'Serving restaurants, entrepreneurs and brands across India, Canada, the USA and Europe — the jet lag is our problem, not yours.',
     tag: 'Who we are',
-  },
-  {
-    to: '/blend-lab',
-    title: 'Blend Lab',
-    desc: "Drag to find your team's blend between engineering and growth — try it yourself.",
-    tag: 'Try it',
   },
   {
     to: '/process',
@@ -29,13 +23,13 @@ const ITEMS = [
   {
     to: '/work',
     title: 'Work',
-    desc: 'Recent results across fintech, retail and healthtech clients.',
-    tag: 'Recent results',
+    desc: 'Restaurants, religious organizations, entrepreneurs, public leaders and e-commerce — see who we work with.',
+    tag: 'Who we work with',
   },
   {
     to: '/contact',
     title: 'Contact',
-    desc: "Tell us what you're building — we'll tell you what it takes, within 48 hours.",
+    desc: "Tell us about your business — we'll tell you what it takes to grow it. Fast replies, we promise.",
     tag: 'Get in touch',
   },
 ];
@@ -47,7 +41,7 @@ export default function Highlights() {
         <Reveal className="section-head">
           <span className="kicker">Explore Codestroom</span>
           <h2>Everything you need, one click away.</h2>
-          <p>A quick map of what we do, how we work, and where to find us — dive into any of it.</p>
+          <p>A quick map of what we do, how we work, and where to find us — no treasure map required.</p>
         </Reveal>
         <div className="service-grid">
           {ITEMS.map((item) => (

@@ -1,35 +1,48 @@
 import Reveal from './Reveal';
+import { AdsIcon, BrandIcon, CommerceIcon, LocalIcon, SocialIcon, WebIcon } from './ServiceIcons';
 
 const SERVICES = [
   {
-    title: 'Web & Product Engineering',
-    desc: 'Custom web apps, e-commerce platforms and internal tools built on modern, maintainable stacks — designed to scale past launch day.',
-    tag: 'Full-stack delivery',
+    title: 'Social Media Marketing',
+    desc: 'Content, community management and ad campaigns across Instagram, Facebook and beyond — because nobody trusts a business with a blank grid and three followers.',
+    tag: 'Instagram · Facebook · Content',
+    icon: SocialIcon,
+    tint: 'grad-1',
   },
   {
-    title: 'Mobile App Development',
-    desc: 'Native and cross-platform apps for iOS and Android, from first prototype to App Store launch and post-release iteration.',
-    tag: 'iOS · Android · Cross-platform',
+    title: 'Paid Advertising',
+    desc: 'Google and Meta ad campaigns tuned to your real goal — reservations, orders, donations or sales. No mystery metrics, no "trust the process."',
+    tag: 'Google Ads · Meta Ads',
+    icon: AdsIcon,
+    tint: 'grad-2',
   },
   {
-    title: 'Cloud & IT Infrastructure',
-    desc: 'Architecture, migration, and managed DevOps so your systems stay fast, secure and online — wherever your team logs in from.',
-    tag: 'AWS · Azure · GCP',
+    title: 'Local SEO & Google Business',
+    desc: "Get found by the people searching nearby — the difference between showing up on Maps and being invisible. Invisible doesn't pay the bills.",
+    tag: 'Maps · Local search',
+    icon: LocalIcon,
+    tint: 'grad-3',
   },
   {
-    title: 'Performance Marketing',
-    desc: 'Paid search, paid social and programmatic campaigns run against real revenue targets, not vanity impressions.',
-    tag: 'Search · Social · Programmatic',
+    title: 'Website & Landing Pages',
+    desc: 'Fast, mobile-first websites and landing pages so your business or organization looks credible the moment someone searches for you. First impressions happen in milliseconds — no pressure.',
+    tag: 'Web design · Landing pages',
+    icon: WebIcon,
+    tint: 'grad-1',
   },
   {
-    title: 'SEO & Content Strategy',
-    desc: 'Technical SEO, editorial content and structured data that compound — building organic visibility that outlasts any single campaign.',
-    tag: 'Technical + editorial',
+    title: 'Branding & Content Creation',
+    desc: 'Visual identity, photography and content that builds trust — for a restaurant menu, a place of worship or a public profile.',
+    tag: 'Identity · Photography · Content',
+    icon: BrandIcon,
+    tint: 'grad-2',
   },
   {
-    title: 'Brand & Creative',
-    desc: 'Identity systems, design language and campaign creative that hold together across every market you operate in.',
-    tag: 'Identity · Design · Campaigns',
+    title: 'E-commerce Marketing',
+    desc: 'Product listings, marketplace ads and conversion-focused funnels for online stores — built to turn window shoppers into actual shoppers.',
+    tag: 'Shopify · Marketplaces · Funnels',
+    icon: CommerceIcon,
+    tint: 'grad-3',
   },
 ];
 
@@ -39,19 +52,18 @@ export default function Services() {
       <div className="wrap">
         <Reveal className="section-head">
           <span className="kicker">What we do</span>
-          <h2>Two disciplines, engineered to overlap.</h2>
+          <h2>One team, every channel your business needs.</h2>
           <p>
-            Most agencies hand you off between a dev shop and a marketing shop. We run both
-            under one team, so the site that gets built is the site that gets found — and the
-            campaign that gets planned is technically possible to ship.
+            From a neighborhood restaurant to a growing e-commerce brand, we run the full
+            digital marketing stack — so you don't have to piece together five different
+            vendors.
           </p>
         </Reveal>
         <div className="service-grid">
           {SERVICES.map((service) => (
             <Reveal as="div" key={service.title} className="service-card">
-              <div className="icon-blend">
-                <i></i>
-                <i></i>
+              <div className={`service-icon ${service.tint}`}>
+                <service.icon />
               </div>
               <h3>{service.title}</h3>
               <p>{service.desc}</p>
