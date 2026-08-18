@@ -52,7 +52,9 @@ export default function Footer() {
         </div>
 
         <div className="footer-bottom">
-          <span>© 2026 Codestroom. All rights reserved.</span>
+          <span>
+            © 2026 Codestroom. All rights reserved. <Link to="/privacy-policy" className="footer-legal-link">Privacy Policy</Link>
+          </span>
           <div className="footer-bottom-right">
             <button
               type="button"
