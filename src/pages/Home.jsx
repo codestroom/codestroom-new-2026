@@ -1,8 +1,12 @@
 import Hero from '../components/Hero';
-import Marquee from '../components/Marquee';
-import Highlights from '../components/Highlights';
-import BlendLab from '../components/BlendLab';
-import CTA from '../components/CTA';
+import FunkyMarquee from '../components/home/FunkyMarquee';
+import FunkyBentoServices from '../components/home/FunkyBentoServices';
+import FunkyProjectLab from '../components/home/FunkyProjectLab';
+import FunkyVsBoring from '../components/home/FunkyVsBoring';
+import FunkyShowcase from '../components/home/FunkyShowcase';
+import FunkyTestimonials from '../components/home/FunkyTestimonials';
+import FunkyFAQ from '../components/home/FunkyFAQ';
+import FunkyCTA from '../components/home/FunkyCTA';
 import SEOHead from '../components/SEOHead';
 
 const homeWebSiteSchema = {
@@ -27,11 +31,18 @@ export default function Home() {
         keywords="AI services, web development React, Angular, WordPress, mobile app Flutter, React Native, custom software, backend FastAPI, Node.js, Spring Boot, ecommerce, digital marketing, IT company"
         schemas={[homeWebSiteSchema]}
       />
+      {/* Hero Section preserved intact as requested */}
       <Hero />
-      <Marquee />
-      <Highlights />
-      <BlendLab />
-      <CTA />
+      
+      {/* Stylish & Funky Neo-Digital Sections */}
+      <FunkyMarquee />
+      <FunkyBentoServices />
+      <FunkyProjectLab />
+      <FunkyVsBoring />
+      <FunkyShowcase />
+      <FunkyTestimonials />
+      <FunkyFAQ />
+      <FunkyCTA />
     </>
   );
 }

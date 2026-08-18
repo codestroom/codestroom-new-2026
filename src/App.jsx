@@ -7,6 +7,11 @@ import AboutPage from './pages/AboutPage';
 import GlobalReachPage from './pages/GlobalReachPage';
 import ProcessPage from './pages/ProcessPage';
 import WorkPage from './pages/WorkPage';
+import PortfolioPage from './pages/PortfolioPage';
+import CaseStudiesPage from './pages/CaseStudiesPage';
+import CaseStudyDetailPage from './pages/CaseStudyDetailPage';
+import BlogPage from './pages/BlogPage';
+import BlogPostPage from './pages/BlogPostPage';
 import ContactPage from './pages/ContactPage';
 import NotFound from './pages/NotFound';
 
@@ -21,6 +26,11 @@ export default function App() {
         <Route path="/global-reach" element={<GlobalReachPage />} />
         <Route path="/process" element={<ProcessPage />} />
         <Route path="/work" element={<WorkPage />} />
+        <Route path="/portfolio" element={<PortfolioPage />} />
+        <Route path="/case-studies" element={<CaseStudiesPage />} />
+        <Route path="/case-studies/:slug" element={<CaseStudyDetailPage />} />
+        <Route path="/blog" element={<BlogPage />} />
+        <Route path="/blog/:slug" element={<BlogPostPage />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="*" element={<NotFound />} />
       </Route>

@@ -2,6 +2,8 @@ import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { describe, expect, it } from 'vitest';
 import App from './App';
+import { CASE_STUDIES } from './data/caseStudiesData';
+import { BLOG_POSTS } from './data/blogData';
 
 function renderAt(path) {
   return render(
@@ -24,11 +26,41 @@ describe('routing', () => {
     ['/global-reach', 'Local insight, wherever your audience hangs out.'],
     ['/process', 'One engagement, four checkpoints.'],
     ['/work', 'Built for the businesses and people who serve their communities.'],
+    ['/portfolio', "The things we've built — and the things we keep building."],
+    ['/case-studies', 'What we changed, how we changed it, and what happened next.'],
+    ['/blog', 'Things we learned the expensive way, written down.'],
     ['/contact', "However you'd rather start the conversation."],
   ])('renders %s', (path, heading) => {
     renderAt(path);
     expect(screen.getByText(heading)).toBeInTheDocument();
   });
+
+  it.each(CASE_STUDIES.map((study) => [`/case-studies/${study.slug}`, study.title]))(
+    'renders case study %s',
+    (path, title) => {
+      const page = renderAt(path);
+      expect(page.getByRole('heading', { level: 1 })).toHaveTextContent(title);
+      page.unmount();
+    }
+  );
+
+  it.each(BLOG_POSTS.map((post) => [`/blog/${post.slug}`, post.title]))(
+    'renders blog post %s',
+    (path, title) => {
+      const page = renderAt(path);
+      expect(page.getByRole('heading', { level: 1 })).toHaveTextContent(title);
+      page.unmount();
+    }
+  );
+
+  it.each([['/case-studies/not-a-study'], ['/blog/not-a-post']])(
+    'falls back to the 404 page for %s',
+    (path) => {
+      const page = renderAt(path);
+      expect(page.getByText('This page ghosted us.')).toBeInTheDocument();
+      page.unmount();
+    }
+  );
 
   it.each([
     ['/services/ai-solutions', 'AI Services & Enterprise Intelligence'],

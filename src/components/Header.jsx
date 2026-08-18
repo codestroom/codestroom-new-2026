@@ -5,9 +5,9 @@ import ServiceMegaMenu from './ServiceMegaMenu';
 const NAV_LINKS = [
   { to: '/services', label: 'Services', hasDropdown: true },
   { to: '/about', label: 'About Us' },
-  { to: '/global-reach', label: 'Global Reach' },
-  { to: '/process', label: 'Process' },
-  { to: '/work', label: 'Work' },
+  { to: '/portfolio', label: 'Portfolio' },
+  { to: '/case-studies', label: 'Case Studies' },
+  { to: '/blog', label: 'Blog' },
   { to: '/contact', label: 'Contact' },
 ];
 

@@ -1,4 +1,4 @@
-import CTA from '../components/CTA';
+import ContactHero from '../components/contact/ContactHero';
 import ContactDetails from '../components/ContactDetails';
 import ContactForm from '../components/ContactForm';
 import SEOHead from '../components/SEOHead';
@@ -27,7 +27,7 @@ export default function ContactPage() {
         keywords="contact Codestroom, hire software engineers, request project quote, AI consultation, mobile app development inquiry"
         schemas={[contactPageSchema]}
       />
-      <CTA />
+      <ContactHero />
       <ContactForm />
       <ContactDetails />
     </>
