@@ -1,5 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 import Layout from './components/Layout';
+import Preloader from './components/Preloader';
 import Home from './pages/Home';
 import ServicesPage from './pages/ServicesPage';
 import ServiceDetailPage from './pages/ServiceDetailPage';
@@ -12,7 +13,9 @@ import NotFound from './pages/NotFound';
 
 export default function App() {
   return (
-    <Routes>
+    <>
+      <Preloader />
+      <Routes>
       <Route element={<Layout />}>
         <Route path="/" element={<Home />} />
         <Route path="/services" element={<ServicesPage />} />
@@ -24,6 +27,7 @@ export default function App() {
         <Route path="/contact" element={<ContactPage />} />
         <Route path="*" element={<NotFound />} />
       </Route>
-    </Routes>
+      </Routes>
+    </>
   );
 }
