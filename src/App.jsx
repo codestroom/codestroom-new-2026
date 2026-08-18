@@ -9,6 +9,7 @@ import GlobalReachPage from './pages/GlobalReachPage';
 import ProcessPage from './pages/ProcessPage';
 import WorkPage from './pages/WorkPage';
 import ContactPage from './pages/ContactPage';
+import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
 import NotFound from './pages/NotFound';
 
 export default function App() {
@@ -25,6 +26,7 @@ export default function App() {
         <Route path="/process" element={<ProcessPage />} />
         <Route path="/work" element={<WorkPage />} />
         <Route path="/contact" element={<ContactPage />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
         <Route path="*" element={<NotFound />} />
       </Route>
       </Routes>
