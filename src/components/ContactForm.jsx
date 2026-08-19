@@ -98,6 +98,9 @@ export default function ContactForm() {
 
       if (res.ok) {
         setStatus('success');
+        if (typeof window.fbq === 'function') {
+          window.fbq('track', 'Lead');
+        }
         form.reset();
         setSelectedService('');
         setMessageValue('');
