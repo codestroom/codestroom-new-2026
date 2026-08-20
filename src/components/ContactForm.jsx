@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Reveal from './Reveal';
 
 const FORMSPREE_ENDPOINT = import.meta.env.VITE_FORMSPREE_ENDPOINT;
@@ -58,6 +58,13 @@ export default function ContactForm() {
   const [status, setStatus] = useState('idle'); // idle | sending | success | error
   const [selectedService, setSelectedService] = useState('');
   const [messageValue, setMessageValue] = useState('');
+  // Synchronous re-entrancy guard: React state (`status`) is only safe to read
+  // after a render commits, so a rapid double-click/double-Enter could invoke
+  // handleSubmit twice before `disabled` ever reflects `sending`. This ref is
+  // checked and set before any await, so the second call bails out immediately
+  // — that's what actually stops a duplicate Formspree POST and a duplicate
+  // fbq('track', 'Lead') for one logical submission.
+  const isSubmittingRef = useRef(false);
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
@@ -81,11 +88,14 @@ export default function ContactForm() {
   async function handleSubmit(e) {
     e.preventDefault();
 
+    if (isSubmittingRef.current) return;
+
     if (!FORMSPREE_ENDPOINT) {
       setStatus('error');
       return;
     }
 
+    isSubmittingRef.current = true;
     const form = e.target;
     setStatus('sending');
 
@@ -98,9 +108,14 @@ export default function ContactForm() {
 
       if (res.ok) {
         setStatus('success');
-        if (typeof window.fbq === 'function') {
+
+        // Meta Lead conversion event — fires exactly once, only here, only
+        // after Formspree confirms the submission succeeded. Never fires on
+        // page load, on opening this page, or on a failed/invalid submission.
+        if (typeof window !== 'undefined' && window.fbq) {
           window.fbq('track', 'Lead');
         }
+
         form.reset();
         setSelectedService('');
         setMessageValue('');
@@ -109,6 +124,8 @@ export default function ContactForm() {
       }
     } catch {
       setStatus('error');
+    } finally {
+      isSubmittingRef.current = false;
     }
   }
 
